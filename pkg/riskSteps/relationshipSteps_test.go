@@ -14,22 +14,22 @@ var dependentsScenario = []riskSteps.TestingScenario{
 			Dependents: 0,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
 
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -41,21 +41,21 @@ var dependentsScenario = []riskSteps.TestingScenario{
 			Dependents: 1,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
@@ -84,21 +84,21 @@ var marriedScenario = []riskSteps.TestingScenario{
 			MaritalStatus: "married",
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -110,21 +110,21 @@ var marriedScenario = []riskSteps.TestingScenario{
 			MaritalStatus: "single",
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

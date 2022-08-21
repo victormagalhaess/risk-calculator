@@ -15,13 +15,13 @@ var noVehicleScenarios = []riskSteps.TestingScenario{
 			Vehicle: nil,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -35,13 +35,13 @@ var noVehicleScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -69,13 +69,13 @@ var vehicleBuiltLast5YearsScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -89,13 +89,13 @@ var vehicleBuiltLast5YearsScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
