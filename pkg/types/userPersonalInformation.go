@@ -1,21 +1,21 @@
 package types
 
-type house struct {
+type House struct {
 	OwnershipStatus string `json:"ownership_status"`
 }
 
-type vehicle struct {
+type Vehicle struct {
 	Year int `json:"year"`
 }
 
 type UserPersonalInformation struct {
-	Age           int     `json:"age"`
-	Dependents    int     `json:"dependents"`
-	House         house   `json:"house"`
-	Income        int     `json:"income"`
-	MaritalStatus string  `json:"marital_status"`
-	RiskQuestions []bool  `json:"risk_questions"`
-	Vehicle       vehicle `json:"vehicle"`
+	Age           int      `json:"age"`
+	Dependents    int      `json:"dependents"`
+	House         *House   `json:"house"`
+	Income        int      `json:"income"`
+	MaritalStatus string   `json:"marital_status"`
+	RiskQuestions []bool   `json:"risk_questions"`
+	Vehicle       *Vehicle `json:"vehicle"`
 }
 
 func (u *UserPersonalInformation) IsUserMarried() bool {
@@ -23,7 +23,7 @@ func (u *UserPersonalInformation) IsUserMarried() bool {
 }
 
 func (u *UserPersonalInformation) IsHouseMortgaged() bool {
-	return u.House.OwnershipStatus == "mortgaged"
+	return u.House != nil && u.House.OwnershipStatus == "mortgaged"
 }
 
 func (u *UserPersonalInformation) BaseRisk() int {
