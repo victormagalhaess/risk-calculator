@@ -9,32 +9,11 @@ import (
 )
 
 func TestInitializePipeline(t *testing.T) {
-	t.Run("TestInitializePipeline", func(t *testing.T) {
-		pipeline := riskSteps.NewPipeline()
-		if len(pipeline.RiskSteps) != 0 {
-			t.Errorf("Error pipeline should be empty, but it was not")
-		}
-
-		steps := []riskSteps.Step{
-			riskSteps.Over60,
-			riskSteps.Under40,
-			riskSteps.Under30,
-			riskSteps.NoHouse,
-			riskSteps.MortgagedHouse,
-			riskSteps.NoIncome,
-			riskSteps.IncomeOver200k,
-			riskSteps.Married,
-			riskSteps.Dependents,
-			riskSteps.NoVehicle,
-			riskSteps.VehicleBuiltLast5Years,
-		}
-
-		pipeline.AddSteps(steps...)
-		if len(pipeline.RiskSteps) != len(steps) {
-			t.Errorf("Error pipeline should have %d steps, but it has %d", len(steps), len(pipeline.RiskSteps))
-		}
-
-	})
+	riskengine.InitializePipeline()
+	if len(riskengine.Pipeline.RiskSteps) != 11 {
+		t.Errorf("Error pipeline should have been initialized with 11 steps, but it has %d steps", len(riskengine.Pipeline.RiskSteps))
+	}
+	riskengine.Pipeline.RiskSteps = []riskSteps.Step{}
 }
 
 func TestExecutePipeline(t *testing.T) {
