@@ -1,4 +1,4 @@
-package riskengine_test
+package riskEngine_test
 
 import (
 	"testing"
