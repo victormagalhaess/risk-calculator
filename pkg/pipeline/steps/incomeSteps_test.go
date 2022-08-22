@@ -4,25 +4,25 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var noIncomeScenarios = []utils.TestingScenario{
 	{
 		About: "NoIncome -> Income <= 0",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Income: 0,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -30,17 +30,17 @@ var noIncomeScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "NoIncome -> Income > 0",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Income: 1,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -62,41 +62,41 @@ func TestNoIncome(t *testing.T) {
 var incomeOver200kScenarios = []utils.TestingScenario{
 	{
 		About: "IncomeOver200k -> Income > 200000",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Income: 200001,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -104,18 +104,18 @@ var incomeOver200kScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "IncomeOver200k -> Income <= 200000",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Income: 200000,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
 
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

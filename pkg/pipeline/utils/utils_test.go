@@ -3,26 +3,26 @@ package utils_test
 import (
 	"testing"
 
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 func TestAddToAllValues(t *testing.T) {
 	t.Run("Positive Increment", func(t *testing.T) {
-		insuranceSteps := types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		insuranceSteps := model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -44,20 +44,20 @@ func TestAddToAllValues(t *testing.T) {
 	})
 
 	t.Run("Negative Increment", func(t *testing.T) {
-		insuranceSteps := types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		insuranceSteps := model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

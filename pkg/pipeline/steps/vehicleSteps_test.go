@@ -4,25 +4,25 @@ import (
 	"testing"
 	"time"
 
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var noVehicleScenarios = []utils.TestingScenario{
 	{
 		About: "NoVehicle -> Vehicle == nil",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Vehicle: nil,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -30,19 +30,19 @@ var noVehicleScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "NoVehicle -> Vehicle != nil",
-		UserInfo: types.UserPersonalInformation{
-			Vehicle: &types.Vehicle{
+		UserInfo: model.UserPersonalInformation{
+			Vehicle: &model.Vehicle{
 				Year: 2019,
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -64,19 +64,19 @@ func TestNoVehicle(t *testing.T) {
 var vehicleBuiltLast5YearsScenarios = []utils.TestingScenario{
 	{
 		About: "VehicleBuiltLast5Years -> VehicleBuiltLast5Years == true",
-		UserInfo: types.UserPersonalInformation{
-			Vehicle: &types.Vehicle{
+		UserInfo: model.UserPersonalInformation{
+			Vehicle: &model.Vehicle{
 				Year: time.Now().Year() - 5,
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -84,19 +84,19 @@ var vehicleBuiltLast5YearsScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "VehicleBuiltLast5Years -> VehicleBuiltLast5Years == false",
-		UserInfo: types.UserPersonalInformation{
-			Vehicle: &types.Vehicle{
+		UserInfo: model.UserPersonalInformation{
+			Vehicle: &model.Vehicle{
 				Year: time.Now().Year() - 4,
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Auto: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto: model.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
