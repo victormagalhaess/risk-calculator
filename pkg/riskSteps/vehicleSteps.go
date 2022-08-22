@@ -16,8 +16,7 @@ func NoVehicle(userInfo types.UserPersonalInformation,
 func VehicleBuiltLast5Years(userInfo types.UserPersonalInformation,
 	insuranceSteps *types.UserInsuranceAnalysisSteps) {
 	currentYear, _, _ := time.Now().Date()
-	yearDifference := currentYear - userInfo.Vehicle.Year
-	if userInfo.Vehicle != nil && yearDifference < 5 {
+	if userInfo.Vehicle != nil && currentYear-userInfo.Vehicle.Year < 5 {
 		insuranceSteps.Auto.Risk++
 	}
 }
