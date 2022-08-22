@@ -8,14 +8,30 @@ import (
 	"os/signal"
 	"time"
 
+	_ "github.com/victormagalhaess/origin-backend-take-home-assignment/docs"
+
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/api"
 )
+
+// @title Origin Backend Take Home Assignment
+// @version 1.0
+// @description This is the backend application for the Origin Backend Take Home Assignment.
+// @termsOfService http://swagger.io/terms/
+
+// @contact.name Victor Magalhães
+// @contact.email hello@victordias.dev
+
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host localhost:8080
 
 func main() {
 	wait := time.Second * 10 //default time to wait connections to close before shutdown
 
 	application := api.Application{}
 	application.InitializeRouter()
+	application.InitializeSwagger()
 
 	// setting connection timeouts for http server
 	server := &http.Server{

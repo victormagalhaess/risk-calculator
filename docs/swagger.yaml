@@ -1,0 +1,83 @@
+definitions:
+  types.UserPersonalInformation:
+    description: User Personal information
+    properties:
+      age:
+        example: 30
+        type: integer
+      dependents:
+        example: 2
+        type: integer
+      house:
+        additionalProperties:
+          type: string
+        example:
+          ownership_status: mortgaged
+        type: object
+      income:
+        example: 100000
+        type: integer
+      marital_status:
+        example: married
+        type: string
+      risk_questions:
+        example:
+        - 1
+        - 0
+        - 0
+        items:
+          type: integer
+        type: array
+      vehicle:
+        additionalProperties:
+          type: integer
+        example:
+          year: 2018
+        type: object
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: hello@victordias.dev
+    name: Victor Magalhães
+  description: This is the backend application for the Origin Backend Take Home Assignment.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Origin Backend Take Home Assignment
+  version: "1.0"
+paths:
+  /api/v1/healthcheck:
+    get:
+      description: Healthcheck endpoint
+      produces:
+      - text/plain
+      responses:
+        "200":
+          description: OK
+      summary: Endpoint to check the health of the application
+      tags:
+      - Healthcheck
+  /api/v1/risk:
+    post:
+      consumes:
+      - application/json
+      description: Risk endpoint
+      parameters:
+      - description: User Personal Information
+        in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/types.UserPersonalInformation'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      summary: Endpoint to calculate the risk of an insurance policy related to a
+        given customer
+      tags:
+      - Risk
+swagger: "2.0"

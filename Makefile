@@ -6,7 +6,10 @@ default: build
 
 #host commands
 
-build:
+install:
+	go get
+
+build: install
 	go build -o $(BINARY) $(ENTRY)
 
 run: build
@@ -22,6 +25,9 @@ test:
 cover:
 	go test -v $(TESTS) -failfast -coverprofile=cover.out
 	go tool cover -html=cover.out -o coverage.html
+
+docs: install
+	swag init
 
 #dockerized commands
 

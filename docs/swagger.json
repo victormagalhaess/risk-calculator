@@ -1,0 +1,121 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "This is the backend application for the Origin Backend Take Home Assignment.",
+        "title": "Origin Backend Take Home Assignment",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "Victor Magalhães",
+            "email": "hello@victordias.dev"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "localhost:8080",
+    "paths": {
+        "/api/v1/healthcheck": {
+            "get": {
+                "description": "Healthcheck endpoint",
+                "produces": [
+                    "text/plain"
+                ],
+                "tags": [
+                    "Healthcheck"
+                ],
+                "summary": "Endpoint to check the health of the application",
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/api/v1/risk": {
+            "post": {
+                "description": "Risk endpoint",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Risk"
+                ],
+                "summary": "Endpoint to calculate the risk of an insurance policy related to a given customer",
+                "parameters": [
+                    {
+                        "description": "User Personal Information",
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/types.UserPersonalInformation"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "types.UserPersonalInformation": {
+            "description": "User Personal information",
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "example": 30
+                },
+                "dependents": {
+                    "type": "integer",
+                    "example": 2
+                },
+                "house": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "example": {
+                        "ownership_status": "mortgaged"
+                    }
+                },
+                "income": {
+                    "type": "integer",
+                    "example": 100000
+                },
+                "marital_status": {
+                    "type": "string",
+                    "example": "married"
+                },
+                "risk_questions": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "example": [
+                        1,
+                        0,
+                        0
+                    ]
+                },
+                "vehicle": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "integer"
+                    },
+                    "example": {
+                        "year": 2018
+                    }
+                }
+            }
+        }
+    }
+}

@@ -10,6 +10,14 @@ import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
+// @Description Risk endpoint
+// @Summary Endpoint to calculate the risk of an insurance policy related to a given customer
+// @Accept  application/json
+// @Produce  application/json
+// @Router /api/v1/risk [POST]
+// @Param body body types.UserPersonalInformation true "User Personal Information"
+// @Success 200
+// @Tags Risk
 func Risk(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
 	if err != nil {
