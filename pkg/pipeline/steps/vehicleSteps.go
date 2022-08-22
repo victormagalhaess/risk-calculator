@@ -1,4 +1,4 @@
-package riskSteps
+package steps
 
 import (
 	"time"

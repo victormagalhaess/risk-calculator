@@ -1,14 +1,15 @@
-package riskSteps_test
+package steps_test
 
 import (
 	"testing"
 	"time"
 
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskSteps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
-var noVehicleScenarios = []riskSteps.TestingScenario{
+var noVehicleScenarios = []utils.TestingScenario{
 	{
 		About: "NoVehicle -> Vehicle == nil",
 		UserInfo: types.UserPersonalInformation{
@@ -52,7 +53,7 @@ var noVehicleScenarios = []riskSteps.TestingScenario{
 func TestNoVehicle(t *testing.T) {
 	for _, scenario := range noVehicleScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.NoVehicle(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.NoVehicle(scenario.UserInfo, scenario.InsuranceSteps)
 			if scenario.InsuranceSteps.Auto.Eligibility != scenario.Expected.Auto.Eligibility {
 				t.Errorf("Expected %v, got %v", scenario.Expected.Auto.Eligibility, scenario.InsuranceSteps.Auto.Eligibility)
 			}
@@ -60,7 +61,7 @@ func TestNoVehicle(t *testing.T) {
 	}
 }
 
-var vehicleBuiltLast5YearsScenarios = []riskSteps.TestingScenario{
+var vehicleBuiltLast5YearsScenarios = []utils.TestingScenario{
 	{
 		About: "VehicleBuiltLast5Years -> VehicleBuiltLast5Years == true",
 		UserInfo: types.UserPersonalInformation{
@@ -106,7 +107,7 @@ var vehicleBuiltLast5YearsScenarios = []riskSteps.TestingScenario{
 func TestVehicleBuiltLast5Years(t *testing.T) {
 	for _, scenario := range vehicleBuiltLast5YearsScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.VehicleBuiltLast5Years(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.VehicleBuiltLast5Years(scenario.UserInfo, scenario.InsuranceSteps)
 			if scenario.InsuranceSteps.Auto.Risk != scenario.Expected.Auto.Risk {
 				t.Errorf("Expected %v, got %v", scenario.Expected.Auto.Risk, scenario.InsuranceSteps.Auto.Risk)
 			}
