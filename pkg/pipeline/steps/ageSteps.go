@@ -1,6 +1,9 @@
-package riskSteps
+package steps
 
-import "github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+import (
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+)
 
 func Over60(userInfo types.UserPersonalInformation,
 	insuranceSteps *types.UserInsuranceAnalysisSteps) {
@@ -13,7 +16,7 @@ func Over60(userInfo types.UserPersonalInformation,
 func underDesiredAge(age int, userInfo types.UserPersonalInformation,
 	insuranceSteps *types.UserInsuranceAnalysisSteps) {
 	if userInfo.Age < age {
-		AddToAllValues(insuranceSteps, -1)
+		utils.AddToAllValues(insuranceSteps, -1)
 	}
 }
 
