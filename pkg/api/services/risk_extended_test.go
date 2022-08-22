@@ -51,7 +51,7 @@ var testRiskScenarios = []struct {
 				Year: time.Now().Year() - 2,
 			},
 		},
-		output: "{\"auto\":\"regular\",\"disability\":\"regular\",\"home\":\"regular\",\"life\":\"responsible\"}",
+		output: "{\"auto\":\"regular\",\"disability\":\"regular\",\"home\":\"regular\",\"life\":\"regular\"}",
 	},
 	{
 		userInfo: model.UserPersonalInformation{
@@ -171,7 +171,7 @@ var testRiskScenarios = []struct {
 				Year: time.Now().Year() - 8,
 			},
 		},
-		output: "{\"auto\":\"economic\",\"disability\":\"economic\",\"home\":\"economic\",\"life\":\"responsible\"}",
+		output: "{\"auto\":\"regular\",\"disability\":\"regular\",\"home\":\"regular\",\"life\":\"responsible\"}",
 	},
 	{
 		userInfo: model.UserPersonalInformation{
@@ -198,7 +198,7 @@ var testRiskScenarios = []struct {
 			},
 			Income:        20180000,
 			MaritalStatus: "married",
-			RiskQuestions: []int8{0, 1, 1},
+			RiskQuestions: []int8{0, 1, 0},
 			Vehicle: &model.Vehicle{
 				Year: time.Now().Year() - 2022,
 			},
