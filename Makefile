@@ -1,4 +1,4 @@
-TESTS?=$$(go list ./... | egrep -v "types")
+TESTS?=$$(go list ./... | egrep -v "mock")
 BINARY=origin_backend
 ENTRY=main.go
 
