@@ -1,5 +1,21 @@
 definitions:
-  types.UserPersonalInformation:
+  model.RiskProfile:
+    description: Risk profile for a user
+    properties:
+      auto:
+        example: economic
+        type: string
+      disability:
+        example: regular
+        type: string
+      home:
+        example: ineligible
+        type: string
+      life:
+        example: responsible
+        type: string
+    type: object
+  model.UserPersonalInformation:
     description: User Personal information
     properties:
       age:
@@ -70,12 +86,18 @@ paths:
         name: body
         required: true
         schema:
-          $ref: '#/definitions/types.UserPersonalInformation'
+          $ref: '#/definitions/model.UserPersonalInformation'
       produces:
       - application/json
       responses:
         "200":
           description: OK
+          schema:
+            $ref: '#/definitions/model.RiskProfile'
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
       summary: Endpoint to calculate the risk of an insurance policy related to a
         given customer
       tags:

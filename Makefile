@@ -20,7 +20,7 @@ clean:
 	rm -f $(BINARY) cover.out coverage.html
 
 test:
-	go test -v $(TESTS) -failfast
+	go test -v $(TESTS) -failfast -cover 
 
 cover:
 	go test -v $(TESTS) -failfast -coverprofile=cover.out

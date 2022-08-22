@@ -61,20 +61,51 @@ const docTemplate = `{
                         "in": "body",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/types.UserPersonalInformation"
+                            "$ref": "#/definitions/model.UserPersonalInformation"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK"
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.RiskProfile"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "500": {
+                        "description": "Internal Server Error"
                     }
                 }
             }
         }
     },
     "definitions": {
-        "types.UserPersonalInformation": {
+        "model.RiskProfile": {
+            "description": "Risk profile for a user",
+            "type": "object",
+            "properties": {
+                "auto": {
+                    "type": "string",
+                    "example": "economic"
+                },
+                "disability": {
+                    "type": "string",
+                    "example": "regular"
+                },
+                "home": {
+                    "type": "string",
+                    "example": "ineligible"
+                },
+                "life": {
+                    "type": "string",
+                    "example": "responsible"
+                }
+            }
+        },
+        "model.UserPersonalInformation": {
             "description": "User Personal information",
             "type": "object",
             "properties": {

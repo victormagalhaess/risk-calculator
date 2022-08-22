@@ -4,25 +4,25 @@ import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var over60Scenario = []utils.TestingScenario{
 	{
 		About: "Over 60 -> Age > 60",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 61,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -30,17 +30,17 @@ var over60Scenario = []utils.TestingScenario{
 	},
 	{
 		About: "Over 60 -> Age <= 60",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 60,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -62,41 +62,41 @@ func TestOver60(t *testing.T) {
 var under40Scenario = []utils.TestingScenario{
 	{
 		About: "Under 40 -> Age < 40",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 39,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -104,41 +104,41 @@ var under40Scenario = []utils.TestingScenario{
 	},
 	{
 		About: "Under 40 -> Age >= 40",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 40,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -160,41 +160,41 @@ func TestUnder40(t *testing.T) {
 var under30Scenario = []utils.TestingScenario{
 	{
 		About: "Under 30 -> Age < 30",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 29,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -202,41 +202,41 @@ var under30Scenario = []utils.TestingScenario{
 	},
 	{
 		About: "Under 30 -> Age >= 30",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Age: 30,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.StepResult{
+			Auto: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.StepResult{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

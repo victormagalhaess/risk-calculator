@@ -7,7 +7,7 @@ import (
 
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/api/services"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/api/status"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 )
 
 // @Description Risk endpoint
@@ -15,8 +15,10 @@ import (
 // @Accept  application/json
 // @Produce  application/json
 // @Router /api/v1/risk [POST]
-// @Param body body types.UserPersonalInformation true "User Personal Information"
-// @Success 200
+// @Param body body model.UserPersonalInformation true "User Personal Information"
+// @Success 200 {object} model.RiskProfile
+// @Failure 400
+// @Failure 500
 // @Tags Risk
 func Risk(w http.ResponseWriter, r *http.Request) {
 	body, err := ioutil.ReadAll(r.Body)
@@ -25,7 +27,7 @@ func Risk(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	userInfo := &types.UserPersonalInformation{}
+	userInfo := &model.UserPersonalInformation{}
 	err = json.Unmarshal(body, userInfo)
 	if err != nil {
 		status.BadRequest(w, err)
