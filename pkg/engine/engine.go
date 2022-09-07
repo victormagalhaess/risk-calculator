@@ -21,6 +21,7 @@ func InitializePipeline() {
 		steps.Dependents,
 		steps.NoVehicle,
 		steps.VehicleBuiltLast5Years,
+		steps.IncomeUnder25kNoRiskQuestions,
 	)
 }
 
