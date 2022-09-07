@@ -36,3 +36,12 @@ func (u *UserPersonalInformation) BaseRisk() int {
 	}
 	return baseRisk
 }
+
+func (u *UserPersonalInformation) HasRiskQuestions() bool {
+	for _, v := range u.RiskQuestions {
+		if v != 0 {
+			return true
+		}
+	}
+	return false
+}

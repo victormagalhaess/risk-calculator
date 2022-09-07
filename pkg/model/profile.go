@@ -41,3 +41,10 @@ func (u *UserInsuranceAnalysisSteps) MapInsuranceAnalisysToRiskProfile() RiskPro
 	riskProfile.Life = mapStepToRiskProfile(u.Life)
 	return riskProfile
 }
+
+func (u *UserInsuranceAnalysisSteps) SetEligibility(eligibility bool) {
+	u.Auto.Eligibility = eligibility
+	u.Disability.Eligibility = eligibility
+	u.Home.Eligibility = eligibility
+	u.Life.Eligibility = eligibility
+}
