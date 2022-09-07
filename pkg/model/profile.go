@@ -4,7 +4,8 @@ package model
 type RiskProfile struct {
 	Vehicle    string `json:"auto" example:"economic"`
 	Disability string `json:"disability" example:"regular"`
-	Home       string `json:"home" example:"ineligible"`
+	Home       string `json:"home,omitempty" example:"ineligible"`
+	Renters    string `json:"renters,omitempty" example:"ineligible"`
 	Life       string `json:"life" example:"responsible"`
 }
 
@@ -33,13 +34,22 @@ func mapStepToRiskProfile(step StepResult) string {
 	return "responsible"
 }
 
-func (u *UserInsuranceAnalysisSteps) MapInsuranceAnalisysToRiskProfile() RiskProfile {
+func mapHouseToRiskProfile(home StepResult, house *House, riskProfile RiskProfile) RiskProfile {
+	if house != nil && house.OwnershipStatus == "rented" {
+		riskProfile.Renters = mapStepToRiskProfile(home)
+		return riskProfile
+	}
+	riskProfile.Home = mapStepToRiskProfile(home)
+	return riskProfile
+
+}
+
+func (u *UserInsuranceAnalysisSteps) MapInsuranceAnalisysToRiskProfile(userInfo UserPersonalInformation) RiskProfile {
 	riskProfile := RiskProfile{}
 	riskProfile.Vehicle = mapStepToRiskProfile(u.Auto)
 	riskProfile.Disability = mapStepToRiskProfile(u.Disability)
-	riskProfile.Home = mapStepToRiskProfile(u.Home)
 	riskProfile.Life = mapStepToRiskProfile(u.Life)
-	return riskProfile
+	return mapHouseToRiskProfile(u.Home, userInfo.House, riskProfile)
 }
 
 func (u *UserInsuranceAnalysisSteps) SetEligibility(eligibility bool) {

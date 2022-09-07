@@ -31,7 +31,7 @@ func Risk(userInfo model.UserPersonalInformation) ([]byte, error) {
 		engine.InitializePipeline()
 	}
 	engine.ExecutePipeline(userInfo, insuranceSteps)
-	response, err := json.Marshal(insuranceSteps.MapInsuranceAnalisysToRiskProfile())
+	response, err := json.Marshal(insuranceSteps.MapInsuranceAnalisysToRiskProfile(userInfo))
 	if err != nil {
 		return nil, err
 	}
