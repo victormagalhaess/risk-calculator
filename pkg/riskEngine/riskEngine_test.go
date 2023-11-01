@@ -3,8 +3,8 @@ package riskEngine_test
 import (
 	"testing"
 
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline"
 	riskengine "github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskEngine"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskSteps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
@@ -13,12 +13,12 @@ func TestInitializePipeline(t *testing.T) {
 	if len(riskengine.Pipeline.RiskSteps) != 11 {
 		t.Errorf("Error pipeline should have been initialized with 11 steps, but it has %d steps", len(riskengine.Pipeline.RiskSteps))
 	}
-	riskengine.Pipeline.RiskSteps = []riskSteps.Step{}
+	riskengine.Pipeline.RiskSteps = []pipeline.Step{}
 }
 
 func TestExecutePipeline(t *testing.T) {
 	called := 0
-	mockSteps := []riskSteps.Step{}
+	mockSteps := []pipeline.Step{}
 
 	for i := 0; i < 10; i++ {
 		mockSteps = append(mockSteps,
