@@ -1,4 +1,4 @@
-package riskSteps
+package steps
 
 import "github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 

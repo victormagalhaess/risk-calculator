@@ -1,13 +1,14 @@
-package riskSteps_test
+package steps_test
 
 import (
 	"testing"
 
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskSteps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
-var dependentsScenario = []riskSteps.TestingScenario{
+var dependentsScenario = []utils.TestingScenario{
 	{
 		About: "No dependents -> 0 dependents",
 		UserInfo: types.UserPersonalInformation{
@@ -66,7 +67,7 @@ var dependentsScenario = []riskSteps.TestingScenario{
 func TestDependents(t *testing.T) {
 	for _, scenario := range dependentsScenario {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.Dependents(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.Dependents(scenario.UserInfo, scenario.InsuranceSteps)
 			if scenario.InsuranceSteps.Life.Risk != scenario.Expected.Life.Risk {
 				t.Errorf("Expected %v, got %v", scenario.Expected.Life.Risk, scenario.InsuranceSteps.Life.Risk)
 			}
@@ -77,7 +78,7 @@ func TestDependents(t *testing.T) {
 	}
 }
 
-var marriedScenario = []riskSteps.TestingScenario{
+var marriedScenario = []utils.TestingScenario{
 	{
 		About: "Married -> married",
 		UserInfo: types.UserPersonalInformation{
@@ -135,7 +136,7 @@ var marriedScenario = []riskSteps.TestingScenario{
 func TestMarried(t *testing.T) {
 	for _, scenario := range marriedScenario {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.Married(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.Married(scenario.UserInfo, scenario.InsuranceSteps)
 			if scenario.InsuranceSteps.Life.Risk != scenario.Expected.Life.Risk {
 				t.Errorf("Expected %v, got %v", scenario.Expected.Life.Risk, scenario.InsuranceSteps.Life.Risk)
 			}

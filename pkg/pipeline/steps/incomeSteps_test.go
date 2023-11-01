@@ -1,14 +1,15 @@
-package riskSteps_test
+package steps_test
 
 import (
 	"testing"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskSteps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
-var noIncomeScenarios = []riskSteps.TestingScenario{
+var noIncomeScenarios = []utils.TestingScenario{
 	{
 		About: "NoIncome -> Income <= 0",
 		UserInfo: types.UserPersonalInformation{
@@ -50,7 +51,7 @@ var noIncomeScenarios = []riskSteps.TestingScenario{
 func TestNoIncome(t *testing.T) {
 	for _, scenario := range noIncomeScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.NoIncome(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.NoIncome(scenario.UserInfo, scenario.InsuranceSteps)
 			if scenario.InsuranceSteps.Disability.Eligibility != scenario.Expected.Disability.Eligibility {
 				t.Errorf("Expected %v, got %v", scenario.Expected.Disability.Eligibility, scenario.InsuranceSteps.Disability.Eligibility)
 			}
@@ -58,7 +59,7 @@ func TestNoIncome(t *testing.T) {
 	}
 }
 
-var incomeOver200kScenarios = []riskSteps.TestingScenario{
+var incomeOver200kScenarios = []utils.TestingScenario{
 	{
 		About: "IncomeOver200k -> Income > 200000",
 		UserInfo: types.UserPersonalInformation{
@@ -125,7 +126,7 @@ var incomeOver200kScenarios = []riskSteps.TestingScenario{
 func TestIncomeOver200k(t *testing.T) {
 	for _, scenario := range incomeOver200kScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
-			riskSteps.IncomeOver200k(scenario.UserInfo, scenario.InsuranceSteps)
+			steps.IncomeOver200k(scenario.UserInfo, scenario.InsuranceSteps)
 			if diff := cmp.Diff(&scenario.Expected, scenario.InsuranceSteps); diff != "" {
 				t.Fatalf("Result mismatch (-want +got):\n%s", diff)
 			}
