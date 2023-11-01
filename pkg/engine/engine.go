@@ -1,9 +1,9 @@
-package riskEngine
+package engine
 
 import (
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var Pipeline = pipeline.NewPipeline()
@@ -24,8 +24,8 @@ func InitializePipeline() {
 	)
 }
 
-func ExecutePipeline(userInfo types.UserPersonalInformation,
-	insuranceSteps *types.UserInsuranceAnalysisSteps) {
+func ExecutePipeline(userInfo model.UserPersonalInformation,
+	insuranceSteps *model.UserInsuranceAnalysisSteps) {
 	for _, step := range Pipeline.RiskSteps {
 		step(userInfo, insuranceSteps)
 	}

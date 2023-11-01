@@ -1,4 +1,4 @@
-package types
+package model
 
 type House struct {
 	OwnershipStatus string `json:"ownership_status"`

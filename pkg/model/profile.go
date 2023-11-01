@@ -1,10 +1,11 @@
-package types
+package model
 
+// @Description Risk profile for a user
 type RiskProfile struct {
-	Vehicle    string `json:"auto"`
-	Disability string `json:"disability"`
-	Home       string `json:"home"`
-	Life       string `json:"life"`
+	Vehicle    string `json:"auto" example:"economic"`
+	Disability string `json:"disability" example:"regular"`
+	Home       string `json:"home" example:"ineligible"`
+	Life       string `json:"life" example:"responsible"`
 }
 
 type StepResult struct {
@@ -20,7 +21,7 @@ type UserInsuranceAnalysisSteps struct {
 }
 
 func mapStepToRiskProfile(step StepResult) string {
-	if step.Eligibility == false {
+	if !step.Eligibility {
 		return "ineligible"
 	}
 	if step.Risk <= 0 {
