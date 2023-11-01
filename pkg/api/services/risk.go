@@ -27,7 +27,9 @@ func Risk(userInfo model.UserPersonalInformation) ([]byte, error) {
 			Eligibility: true,
 		},
 	}
-	engine.InitializePipeline()
+	if len(engine.Pipeline.RiskSteps) == 0 {
+		engine.InitializePipeline()
+	}
 	engine.ExecutePipeline(userInfo, insuranceSteps)
 	response, err := json.Marshal(insuranceSteps.MapInsuranceAnalisysToRiskProfile())
 	if err != nil {
