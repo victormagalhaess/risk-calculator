@@ -15,13 +15,13 @@ var noIncomeScenarios = []riskSteps.TestingScenario{
 			Income: 0,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -33,13 +33,13 @@ var noIncomeScenarios = []riskSteps.TestingScenario{
 			Income: 1,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -65,37 +65,37 @@ var incomeOver200kScenarios = []riskSteps.TestingScenario{
 			Income: 200001,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -108,13 +108,13 @@ var incomeOver200kScenarios = []riskSteps.TestingScenario{
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
 
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

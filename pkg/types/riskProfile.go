@@ -7,14 +7,14 @@ type RiskProfile struct {
 	Life       string `json:"life"`
 }
 
-type Step struct {
+type StepResult struct {
 	Risk        int
 	Eligibility bool
 }
 
 type UserInsuranceAnalysisSteps struct {
-	Auto       Step
-	Disability Step
-	Home       Step
-	Life       Step
+	Auto       StepResult
+	Disability StepResult
+	Home       StepResult
+	Life       StepResult
 }

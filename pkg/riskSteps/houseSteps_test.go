@@ -14,13 +14,13 @@ var noHouseScenarios = []riskSteps.TestingScenario{
 			House: nil,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -34,13 +34,13 @@ var noHouseScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -68,13 +68,13 @@ var mortgagedHouseScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
@@ -88,13 +88,13 @@ var mortgagedHouseScenarios = []riskSteps.TestingScenario{
 			},
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

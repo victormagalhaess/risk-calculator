@@ -15,13 +15,13 @@ var over60Scenario = []riskSteps.TestingScenario{
 			Age: 61,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -33,13 +33,13 @@ var over60Scenario = []riskSteps.TestingScenario{
 			Age: 60,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -65,37 +65,37 @@ var under40Scenario = []riskSteps.TestingScenario{
 			Age: 39,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -107,37 +107,37 @@ var under40Scenario = []riskSteps.TestingScenario{
 			Age: 40,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -163,37 +163,37 @@ var under30Scenario = []riskSteps.TestingScenario{
 			Age: 29,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -205,37 +205,37 @@ var under30Scenario = []riskSteps.TestingScenario{
 			Age: 30,
 		},
 		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
 		Expected: types.UserInsuranceAnalysisSteps{
-			Disability: types.Step{
+			Disability: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Auto: types.Step{
+			Auto: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Home: types.Step{
+			Home: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Life: types.Step{
+			Life: types.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
