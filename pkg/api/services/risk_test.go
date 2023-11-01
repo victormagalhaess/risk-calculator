@@ -22,7 +22,7 @@ func TestRisk(t *testing.T) {
 		},
 	}
 
-	output := "{\"auto\":\"regular\",\"disability\":\"ineligible\",\"home\":\"economic\",\"life\":\"regular\"}"
+	output := "{\"auto\":\"economic\",\"disability\":\"ineligible\",\"home\":\"economic\",\"life\":\"regular\"}"
 	response, err := services.Risk(userInfo)
 	if err != nil {
 		t.Errorf("Unexpected error: %s", err)

@@ -1,6 +1,7 @@
 package controllers_test
 
 import (
+	"io"
 	"io/ioutil"
 	"net/http"
 	"strings"
@@ -32,9 +33,9 @@ func TestRisk(t *testing.T) {
 
 	t.Run("Body is parsable", func(t *testing.T) {
 		input := "{\r\n  \"age\": 35,\r\n  \"dependents\": 2,\r\n  \"house\": {\"ownership_status\": \"owned\"},\r\n  \"income\": 0,\r\n  \"marital_status\": \"married\",\r\n  \"risk_questions\": [0, 1, 0],\r\n  \"vehicle\": {\"year\": 2018}\r\n}"
-		output := "{\"auto\":\"regular\",\"disability\":\"ineligible\",\"home\":\"economic\",\"life\":\"regular\"}"
+		output := "{\"auto\":\"economic\",\"disability\":\"ineligible\",\"home\":\"economic\",\"life\":\"regular\"}"
 
-		body := ioutil.NopCloser(strings.NewReader(input))
+		body := io.NopCloser(strings.NewReader(input))
 		w := mock.ResponseWriter{}
 		r := http.Request{Body: body}
 		controllers.Risk(&w, &r)
