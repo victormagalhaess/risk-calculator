@@ -27,6 +27,12 @@ import (
 // @host localhost:8080
 
 func main() {
+	//parse the port flag from the command line
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+
 	wait := time.Second * 10 //default time to wait connections to close before shutdown
 
 	application := api.Application{}
@@ -35,7 +41,7 @@ func main() {
 
 	// setting connection timeouts for http server
 	server := &http.Server{
-		Addr:         ":8080",
+		Addr:         ":" + port,
 		WriteTimeout: time.Second * 15,
 		ReadTimeout:  time.Second * 15,
 		IdleTimeout:  time.Second * 60,
@@ -44,6 +50,7 @@ func main() {
 
 	// starting http server in a goroutine so that it won't block
 	go func() {
+		log.Println("Starting server on port " + port)
 		if err := server.ListenAndServe(); err != nil {
 			log.Println(err)
 		}

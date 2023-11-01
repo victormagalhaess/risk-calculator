@@ -1,6 +1,7 @@
 TESTS?=$$(go list ./... | egrep -v "mock|docs")
 BINARY=origin_backend
 ENTRY=main.go
+PORT=8080
 
 default: build
 
@@ -13,7 +14,7 @@ build: install
 	go build -o $(BINARY) $(ENTRY)
 
 run: build
-	./$(BINARY)
+	PORT=$(PORT) ./$(BINARY)
 
 clean:
 	go clean
@@ -38,7 +39,7 @@ docker/build-test:
 	docker build -t origin_backend_test . -f Dockerfile.test
 
 docker/run: docker/build
-	docker run --rm --name origin_backend -p 8080:8080 origin_backend
+	docker run -e PORT=$(PORT) --rm --name origin_backend  -p $(PORT):$(PORT) origin_backend
 
 docker/clean:
 	docker rmi -f origin_backend
