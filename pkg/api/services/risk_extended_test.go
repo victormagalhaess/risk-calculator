@@ -207,7 +207,23 @@ var testRiskScenarios = []struct {
 	},
 	{
 		userInfo: model.UserPersonalInformation{}, //abuse of golang's variables 'zero' (default) value
-		output:   "{\"auto\":\"ineligible\",\"disability\":\"ineligible\",\"home\":\"ineligible\",\"life\":\"economic\"}",
+		output:   "{\"auto\":\"ineligible\",\"disability\":\"ineligible\",\"home\":\"ineligible\",\"life\":\"ineligible\"}",
+	},
+	{
+		userInfo: model.UserPersonalInformation{
+			Age:        22,
+			Dependents: 17,
+			House: &model.House{
+				OwnershipStatus: "owned",
+			},
+			Income:        7000,
+			MaritalStatus: "married",
+			RiskQuestions: []int8{0, 0, 0},
+			Vehicle: &model.Vehicle{
+				Year: time.Now().Year() - 2022,
+			},
+		},
+		output: "{\"auto\":\"ineligible\",\"disability\":\"ineligible\",\"home\":\"ineligible\",\"life\":\"ineligible\"}",
 	},
 }
 

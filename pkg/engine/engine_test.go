@@ -10,8 +10,8 @@ import (
 
 func TestInitializePipeline(t *testing.T) {
 	engine.InitializePipeline()
-	if len(engine.Pipeline.RiskSteps) != 11 {
-		t.Errorf("Error pipeline should have been initialized with 11 steps, but it has %d steps", len(engine.Pipeline.RiskSteps))
+	if len(engine.Pipeline.RiskSteps) != 12 {
+		t.Errorf("Error pipeline should have been initialized with 12 steps, but it has %d steps", len(engine.Pipeline.RiskSteps))
 	}
 	engine.Pipeline.RiskSteps = []pipeline.Step{}
 }

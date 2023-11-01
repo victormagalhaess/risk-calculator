@@ -133,3 +133,93 @@ func TestIncomeOver200k(t *testing.T) {
 		})
 	}
 }
+
+var incomeUnder25kNoRiskQuestionsScenarios = []utils.TestingScenario{
+	{
+		About: "Income Under 25k, no risk questions",
+		UserInfo: model.UserPersonalInformation{
+			Income:        24999,
+			RiskQuestions: []int8{0, 0, 0},
+		},
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: false},
+			Disability: model.StepResult{Eligibility: false},
+			Home:       model.StepResult{Eligibility: false},
+			Life:       model.StepResult{Eligibility: false},
+		},
+	},
+	{
+		About: "Income Under 25k, with risk questions",
+		UserInfo: model.UserPersonalInformation{
+			Income:        24999,
+			RiskQuestions: []int8{0, 1, 0},
+		},
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+	},
+	{
+		About: "Income equals 25k, no risk questions",
+		UserInfo: model.UserPersonalInformation{
+			Income:        25000,
+			RiskQuestions: []int8{0, 0, 0},
+		},
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+	},
+	{
+		About: "Income above 25k, with risk questions",
+		UserInfo: model.UserPersonalInformation{
+			Income:        250000,
+			RiskQuestions: []int8{0, 1, 1},
+		},
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+		Expected: model.UserInsuranceAnalysisSteps{
+			Auto:       model.StepResult{Eligibility: true},
+			Disability: model.StepResult{Eligibility: true},
+			Home:       model.StepResult{Eligibility: true},
+			Life:       model.StepResult{Eligibility: true},
+		},
+	},
+}
+
+func TestIncomeUnder25kNoRiskQuestions(t *testing.T) {
+	for _, scenario := range incomeUnder25kNoRiskQuestionsScenarios {
+		t.Run(scenario.About, func(t *testing.T) {
+			steps.IncomeUnder25kNoRiskQuestions(scenario.UserInfo, scenario.InsuranceSteps)
+			if diff := cmp.Diff(&scenario.Expected, scenario.InsuranceSteps); diff != "" {
+				t.Fatalf("Result mismatch (-want +got):\n%s", diff)
+			}
+		})
+	}
+}
