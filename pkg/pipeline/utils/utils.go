@@ -1,10 +1,10 @@
 package utils
 
 import (
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 )
 
-func AddToAllValues(insuranceSteps *types.UserInsuranceAnalysisSteps, value int) {
+func AddToAllValues(insuranceSteps *model.UserInsuranceAnalysisSteps, value int) {
 	insuranceSteps.Auto.Risk += value
 	insuranceSteps.Disability.Risk += value
 	insuranceSteps.Home.Risk += value
@@ -13,7 +13,7 @@ func AddToAllValues(insuranceSteps *types.UserInsuranceAnalysisSteps, value int)
 
 type TestingScenario struct {
 	About          string
-	UserInfo       types.UserPersonalInformation
-	InsuranceSteps *types.UserInsuranceAnalysisSteps
-	Expected       types.UserInsuranceAnalysisSteps
+	UserInfo       model.UserPersonalInformation
+	InsuranceSteps *model.UserInsuranceAnalysisSteps
+	Expected       model.UserInsuranceAnalysisSteps
 }

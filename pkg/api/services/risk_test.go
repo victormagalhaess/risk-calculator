@@ -4,20 +4,20 @@ import (
 	"testing"
 
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/api/services"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 )
 
 func TestRisk(t *testing.T) {
-	userInfo := types.UserPersonalInformation{
+	userInfo := model.UserPersonalInformation{
 		Age:        35,
 		Dependents: 2,
-		House: &types.House{
+		House: &model.House{
 			OwnershipStatus: "owned",
 		},
 		Income:        0,
 		MaritalStatus: "married",
 		RiskQuestions: []int8{0, 1, 0},
-		Vehicle: &types.Vehicle{
+		Vehicle: &model.Vehicle{
 			Year: 2018,
 		},
 	}

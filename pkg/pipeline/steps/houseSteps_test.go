@@ -3,25 +3,25 @@ package steps_test
 import (
 	"testing"
 
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var noHouseScenarios = []utils.TestingScenario{
 	{
 		About: "NoHouse -> House == nil",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			House: nil,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: false,
 			},
@@ -29,19 +29,19 @@ var noHouseScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "NoHouse -> House != nil",
-		UserInfo: types.UserPersonalInformation{
-			House: &types.House{
+		UserInfo: model.UserPersonalInformation{
+			House: &model.House{
 				OwnershipStatus: "owned",
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -63,19 +63,19 @@ func TestNoHouse(t *testing.T) {
 var mortgagedHouseScenarios = []utils.TestingScenario{
 	{
 		About: "MortgagedHouse -> House.OwnershipStatus == mortgaged",
-		UserInfo: types.UserPersonalInformation{
-			House: &types.House{
+		UserInfo: model.UserPersonalInformation{
+			House: &model.House{
 				OwnershipStatus: "mortgaged",
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
@@ -83,19 +83,19 @@ var mortgagedHouseScenarios = []utils.TestingScenario{
 	},
 	{
 		About: "MortgagedHouse -> House.OwnershipStatus != mortgaged",
-		UserInfo: types.UserPersonalInformation{
-			House: &types.House{
+		UserInfo: model.UserPersonalInformation{
+			House: &model.House{
 				OwnershipStatus: "owned",
 			},
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Home: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Home: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},

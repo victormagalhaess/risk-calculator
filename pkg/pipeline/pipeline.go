@@ -1,8 +1,8 @@
 package pipeline
 
-import "github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+import "github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 
-type Step func(userInfo types.UserPersonalInformation, insuranceSteps *types.UserInsuranceAnalysisSteps)
+type Step func(userInfo model.UserPersonalInformation, insuranceSteps *model.UserInsuranceAnalysisSteps)
 type RiskPipeline struct {
 	RiskSteps []Step
 }

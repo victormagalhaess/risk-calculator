@@ -3,32 +3,32 @@ package services
 import (
 	"encoding/json"
 
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskEngine"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/engine"
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 )
 
-func Risk(userInfo types.UserPersonalInformation) ([]byte, error) {
+func Risk(userInfo model.UserPersonalInformation) ([]byte, error) {
 	baseRisk := userInfo.BaseRisk()
-	insuranceSteps := &types.UserInsuranceAnalysisSteps{
-		Disability: types.StepResult{
+	insuranceSteps := &model.UserInsuranceAnalysisSteps{
+		Disability: model.StepResult{
 			Risk:        baseRisk,
 			Eligibility: true,
 		},
-		Auto: types.StepResult{
+		Auto: model.StepResult{
 			Risk:        baseRisk,
 			Eligibility: true,
 		},
-		Home: types.StepResult{
+		Home: model.StepResult{
 			Risk:        baseRisk,
 			Eligibility: true,
 		},
-		Life: types.StepResult{
+		Life: model.StepResult{
 			Risk:        baseRisk,
 			Eligibility: true,
 		},
 	}
-	riskEngine.InitializePipeline()
-	riskEngine.ExecutePipeline(userInfo, insuranceSteps)
+	engine.InitializePipeline()
+	engine.ExecutePipeline(userInfo, insuranceSteps)
 	response, err := json.Marshal(insuranceSteps.MapInsuranceAnalisysToRiskProfile())
 	if err != nil {
 		return nil, err

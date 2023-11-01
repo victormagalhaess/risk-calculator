@@ -3,34 +3,34 @@ package steps_test
 import (
 	"testing"
 
+	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/utils"
-	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/types"
 )
 
 var dependentsScenario = []utils.TestingScenario{
 	{
 		About: "No dependents -> 0 dependents",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Dependents: 0,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
+		Expected: model.UserInsuranceAnalysisSteps{
 
-			Life: types.StepResult{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
@@ -38,25 +38,25 @@ var dependentsScenario = []utils.TestingScenario{
 	},
 	{
 		About: "No dependents -> dependents > 0",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			Dependents: 1,
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
@@ -81,25 +81,25 @@ func TestDependents(t *testing.T) {
 var marriedScenario = []utils.TestingScenario{
 	{
 		About: "Married -> married",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			MaritalStatus: "married",
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        1,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        -1,
 				Eligibility: true,
 			},
@@ -107,25 +107,25 @@ var marriedScenario = []utils.TestingScenario{
 	},
 	{
 		About: "Married -> single",
-		UserInfo: types.UserPersonalInformation{
+		UserInfo: model.UserPersonalInformation{
 			MaritalStatus: "single",
 		},
-		InsuranceSteps: &types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		InsuranceSteps: &model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
 		},
-		Expected: types.UserInsuranceAnalysisSteps{
-			Life: types.StepResult{
+		Expected: model.UserInsuranceAnalysisSteps{
+			Life: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
-			Disability: types.StepResult{
+			Disability: model.StepResult{
 				Risk:        0,
 				Eligibility: true,
 			},
