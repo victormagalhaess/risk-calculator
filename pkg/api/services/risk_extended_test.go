@@ -225,6 +225,54 @@ var testRiskScenarios = []struct {
 		},
 		output: "{\"auto\":\"ineligible\",\"disability\":\"ineligible\",\"home\":\"ineligible\",\"life\":\"ineligible\"}",
 	},
+	{
+		userInfo: model.UserPersonalInformation{
+			Age:        22,
+			Dependents: 17,
+			House: &model.House{
+				OwnershipStatus: "rented",
+			},
+			Income:        7000,
+			MaritalStatus: "married",
+			RiskQuestions: []int8{0, 0, 0},
+			Vehicle: &model.Vehicle{
+				Year: time.Now().Year() - 2022,
+			},
+		},
+		output: "{\"auto\":\"ineligible\",\"disability\":\"ineligible\",\"renters\":\"ineligible\",\"life\":\"ineligible\"}",
+	},
+	{
+		userInfo: model.UserPersonalInformation{
+			Age:        68,
+			Dependents: 0,
+			House: &model.House{
+				OwnershipStatus: "rented",
+			},
+			Income:        250000,
+			MaritalStatus: "single",
+			RiskQuestions: []int8{0, 0, 0},
+			Vehicle: &model.Vehicle{
+				Year: time.Now().Year() - 10,
+			},
+		},
+		output: "{\"auto\":\"economic\",\"disability\":\"ineligible\",\"renters\":\"economic\",\"life\":\"ineligible\"}",
+	},
+	{
+		userInfo: model.UserPersonalInformation{
+			Age:        55,
+			Dependents: 4,
+			House: &model.House{
+				OwnershipStatus: "rented",
+			},
+			Income:        20000,
+			MaritalStatus: "married",
+			RiskQuestions: []int8{1, 1, 1},
+			Vehicle: &model.Vehicle{
+				Year: time.Now().Year() - 8,
+			},
+		},
+		output: "{\"auto\":\"responsible\",\"disability\":\"responsible\",\"renters\":\"responsible\",\"life\":\"responsible\"}",
+	},
 }
 
 func TestRiskExtended(t *testing.T) {
