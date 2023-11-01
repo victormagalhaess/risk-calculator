@@ -1,4 +1,4 @@
-package riskengine
+package riskEngine
 
 import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/riskSteps"
