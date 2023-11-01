@@ -29,7 +29,7 @@ To run it using Docker, run:
 make docker/run
 ```
 
-> Both commands take care of installation of dependencies and build of binaries, however you can just build the binary (or the image in Docker's case) throug the commands:
+> Both commands take care of installation of dependencies and build of binaries, however you can just build the binary (or the image in Docker's case) through the commands:
 
 ```sh
 make build
@@ -136,7 +136,7 @@ This project raised the opportunities to use a lot of knowledge that isn't code,
 It was a good exercise to use this knowledge on a take-home assignment.
 
 ## Technical decisions
-The main technical decisions all starts with the use of Go. It is a good-to-write-fast-to-run language, that allowed a few interesting decisions along the way.
+The main technical decisions all starts with the use of Go. It is a good-to-write-fast-to-run language, that allowed a few interesting decisions along the way. It has a really powerful way to serialize and desserialize json to Go structs (using the [struct tags](https://github.com/victormagalhaess/origin-backend-take-home-assignment/blob/515ff2c6144b0371ea3c98c277576c72b6f8eebb/pkg/model/user.go#L13))
 
 ### Extensible risk calculator
 One of the main concerns were to make the risk engine extensible to validations, since the process of validating an insurance can grow and change with time.
@@ -166,13 +166,17 @@ The controllers were responsible to deal with the REST interface and operations,
 
 The [api](https://github.com/victormagalhaess/origin-backend-take-home-assignment/tree/main/pkg/api/) package holds the routes initialization, and can be easily extend to hold even more routes and middlewares just with a new controller function.
 
-In order to add a new route, a new controller is needed. It can also require a service and new models, so each of this features are divided on it's own package.
+In order to add a new route, a new controller is needed. It can also require a service and new models, so each of these features are divided on it's own package.
 
 ## Non-ideal situations
 Given the characteristics of this take-home assignment a few decisions are taken to save on time, complexity and money.
 An example is the [current deploy](https://origin-take-home-assignment.herokuapp.com/), running on the free cloud platform [Heroku](https://heroku.com) suffer a lot from start latency and can not be scaled, characteristics of the cost trade-off of using a free platform. However, all these non-ideal situations raises the opportuniy to improve on the future. A few ideas were raised about this topic and listed here:
 
 - Use a better cloud provider
+- Use an custom domain to host the application
 - Since the user data could be sensitive, implement authentication and encrypt the requests on the sensitive routes
-- 
+- Implement tests focused on load and system tests.
+- Since the risk engine runs through a lot of steps, it would be good to add some [Fuzzing tests](https://go.dev/doc/tutorial/fuzz) to generate more inputs and help the process of finding edge cases.
+- Add better logging, the default Go log package isn't bad, but it can produce only really simple log messages, it would be better if the logs were more rich and contentful.
+
 
