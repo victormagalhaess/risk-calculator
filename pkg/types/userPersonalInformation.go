@@ -14,7 +14,7 @@ type UserPersonalInformation struct {
 	House         *House   `json:"house"`
 	Income        int      `json:"income"`
 	MaritalStatus string   `json:"marital_status"`
-	RiskQuestions []bool   `json:"risk_questions"`
+	RiskQuestions []int8   `json:"risk_questions"`
 	Vehicle       *Vehicle `json:"vehicle"`
 }
 
@@ -29,7 +29,7 @@ func (u *UserPersonalInformation) IsHouseMortgaged() bool {
 func (u *UserPersonalInformation) BaseRisk() int {
 	baseRisk := 0
 	for _, v := range u.RiskQuestions {
-		if v {
+		if v != 0 {
 			baseRisk++
 		}
 	}
