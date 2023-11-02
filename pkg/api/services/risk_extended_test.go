@@ -275,14 +275,189 @@ var testRiskScenarios = []struct {
 	},
 }
 
-func TestRiskExtended(t *testing.T) {
-	for _, scenario := range testRiskScenarios {
-		response, err := services.Risk(scenario.userInfo)
-		if err != nil {
-			t.Errorf("Unexpected error: %s", err)
-		}
-		if string(response) != scenario.output {
-			t.Errorf("Expected data %s, got %s", scenario.output, response)
-		}
+func TestRisk_When_RiskOnRegularAllButIneligibleForDisability_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[0]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnRegularAll_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[1]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleAll_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[2]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnEconomicAllWithExtremeValues_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[3]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnDisabilityRegularRestEconomic_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[4]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleLifeAndDisability_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[5]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleAuto_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[6]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleLifeAndDisabilityRestEconomic_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[7]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnHomeIneligibleRestEconomic_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[8]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnResponsibleLife_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[9]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnResponsibleAll_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[10]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnEconomicAll_Then_ReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[11]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_ZeroedInputRiskOnIneligibleAll_ThenReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[12]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleAllHomeOwned_ThenReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[13]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnIneligibleAllHomeRented_ThenReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[14]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnEconomicWithRentedHome_ThenReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[15]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
+	}
+}
+
+func TestRisk_When_RiskOnResponsibleWithRentedHome_ThenReturnRisk(t *testing.T) {
+	scenario := testRiskScenarios[16]
+	response, err := services.Risk(scenario.userInfo)
+	if err != nil {
+		t.Errorf("Unexpected error: %s", err)
+	}
+	if string(response) != scenario.output {
+		t.Errorf("Expected data %s, got %s", scenario.output, response)
 	}
 }

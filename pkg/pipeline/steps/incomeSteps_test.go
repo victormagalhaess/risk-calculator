@@ -48,7 +48,7 @@ var noIncomeScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestNoIncome(t *testing.T) {
+func TesStepNoIncome(t *testing.T) {
 	for _, scenario := range noIncomeScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.NoIncome(scenario.UserInfo, scenario.InsuranceSteps)
@@ -123,7 +123,7 @@ var incomeOver200kScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestIncomeOver200k(t *testing.T) {
+func TestStepIncomeOver200k(t *testing.T) {
 	for _, scenario := range incomeOver200kScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.IncomeOver200k(scenario.UserInfo, scenario.InsuranceSteps)
@@ -213,7 +213,7 @@ var incomeUnder25kNoRiskQuestionsScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestIncomeUnder25kNoRiskQuestions(t *testing.T) {
+func TestStepIncomeUnder25kNoRiskQuestions(t *testing.T) {
 	for _, scenario := range incomeUnder25kNoRiskQuestionsScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.IncomeUnder25kNoRiskQuestions(scenario.UserInfo, scenario.InsuranceSteps)

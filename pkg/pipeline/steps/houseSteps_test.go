@@ -49,7 +49,7 @@ var noHouseScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestNoHouse(t *testing.T) {
+func TestStepNoHouse(t *testing.T) {
 	for _, scenario := range noHouseScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.NoHouse(scenario.UserInfo, scenario.InsuranceSteps)
@@ -103,7 +103,7 @@ var mortgagedHouseScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestMortgagedHouse(t *testing.T) {
+func TestStepMortgagedHouse(t *testing.T) {
 	for _, scenario := range mortgagedHouseScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.MortgagedHouse(scenario.UserInfo, scenario.InsuranceSteps)

@@ -7,7 +7,7 @@ import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/model"
 )
 
-func TestRisk(t *testing.T) {
+func TestRisk_When_ProperDataRequested_Then_ReturnRisk(t *testing.T) {
 	userInfo := model.UserPersonalInformation{
 		Age:        35,
 		Dependents: 2,

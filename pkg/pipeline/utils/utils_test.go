@@ -8,7 +8,7 @@ import (
 )
 
 func TestAddToAllValues(t *testing.T) {
-	t.Run("Positive Increment", func(t *testing.T) {
+	t.Run("Positive Increment -> should all be 1", func(t *testing.T) {
 		insuranceSteps := model.UserInsuranceAnalysisSteps{
 			Life: model.StepResult{
 				Risk:        0,
@@ -43,7 +43,7 @@ func TestAddToAllValues(t *testing.T) {
 		}
 	})
 
-	t.Run("Negative Increment", func(t *testing.T) {
+	t.Run("Negative Increment -> should all be -2", func(t *testing.T) {
 		insuranceSteps := model.UserInsuranceAnalysisSteps{
 			Life: model.StepResult{
 				Risk:        0,

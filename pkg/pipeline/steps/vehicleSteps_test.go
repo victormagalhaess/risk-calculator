@@ -50,7 +50,7 @@ var noVehicleScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestNoVehicle(t *testing.T) {
+func TestStepNoVehicle(t *testing.T) {
 	for _, scenario := range noVehicleScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.NoVehicle(scenario.UserInfo, scenario.InsuranceSteps)
@@ -104,7 +104,7 @@ var vehicleBuiltLast5YearsScenarios = []utils.TestingScenario{
 	},
 }
 
-func TestVehicleBuiltLast5Years(t *testing.T) {
+func TestStepVehicleBuiltLast5Years(t *testing.T) {
 	for _, scenario := range vehicleBuiltLast5YearsScenarios {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.VehicleBuiltLast5Years(scenario.UserInfo, scenario.InsuranceSteps)

@@ -48,7 +48,7 @@ var over60Scenario = []utils.TestingScenario{
 	},
 }
 
-func TestOver60(t *testing.T) {
+func TestStepOver60(t *testing.T) {
 	for _, scenario := range over60Scenario {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.Over60(scenario.UserInfo, scenario.InsuranceSteps)
@@ -146,7 +146,7 @@ var under40Scenario = []utils.TestingScenario{
 	},
 }
 
-func TestUnder40(t *testing.T) {
+func TestStepUnder40(t *testing.T) {
 	for _, scenario := range under40Scenario {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.Under40(scenario.UserInfo, scenario.InsuranceSteps)
@@ -244,7 +244,7 @@ var under30Scenario = []utils.TestingScenario{
 	},
 }
 
-func TestUnder30(t *testing.T) {
+func TestStepUnder30(t *testing.T) {
 	for _, scenario := range under30Scenario {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.Under30(scenario.UserInfo, scenario.InsuranceSteps)

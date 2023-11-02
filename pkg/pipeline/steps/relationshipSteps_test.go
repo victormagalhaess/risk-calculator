@@ -64,7 +64,7 @@ var dependentsScenario = []utils.TestingScenario{
 	},
 }
 
-func TestDependents(t *testing.T) {
+func TestStepDependents(t *testing.T) {
 	for _, scenario := range dependentsScenario {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.Dependents(scenario.UserInfo, scenario.InsuranceSteps)
@@ -133,7 +133,7 @@ var marriedScenario = []utils.TestingScenario{
 	},
 }
 
-func TestMarried(t *testing.T) {
+func TestStepMarried(t *testing.T) {
 	for _, scenario := range marriedScenario {
 		t.Run(scenario.About, func(t *testing.T) {
 			steps.Married(scenario.UserInfo, scenario.InsuranceSteps)

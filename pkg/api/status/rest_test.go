@@ -1,4 +1,4 @@
-//test to the Status REST API
+// test to the Status REST API
 package status_test
 
 import (
@@ -10,7 +10,7 @@ import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/mock"
 )
 
-func TestBadRequest(t *testing.T) {
+func TestRest_When_StatusBadRequest_Then_ShouldProduce_BadRequest(t *testing.T) {
 	w := &mock.ResponseWriter{}
 	err := errors.New("error")
 	status.BadRequest(w, err)
@@ -23,7 +23,7 @@ func TestBadRequest(t *testing.T) {
 
 }
 
-func TestServerError(t *testing.T) {
+func TestRest_When_Status_ServerError_Then_ShouldProduce_ServerError(t *testing.T) {
 	w := &mock.ResponseWriter{}
 	err := errors.New("error")
 	status.ServerError(w, err)
@@ -35,7 +35,7 @@ func TestServerError(t *testing.T) {
 	}
 }
 
-func TestSuccess(t *testing.T) {
+func TestRest_When_StatusSuccess_Then_ShouldProduce_Success(t *testing.T) {
 	w := &mock.ResponseWriter{}
 	Data := []byte("Data")
 	status.Success(w, Data)

@@ -8,7 +8,7 @@ import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline"
 )
 
-func TestInitializePipeline(t *testing.T) {
+func TestEngine_WhenInitializePipeline_Then_ShouldBeInitializedWithSteps(t *testing.T) {
 	engine.InitializePipeline()
 	if len(engine.Pipeline.RiskSteps) != 12 {
 		t.Errorf("Error pipeline should have been initialized with 12 steps, but it has %d steps", len(engine.Pipeline.RiskSteps))
@@ -16,7 +16,7 @@ func TestInitializePipeline(t *testing.T) {
 	engine.Pipeline.RiskSteps = []pipeline.Step{}
 }
 
-func TestExecutePipeline(t *testing.T) {
+func TestEngine_When_ExecutePipeline_ThenShouldExecuteAllSteps(t *testing.T) {
 	called := 0
 	mockSteps := []pipeline.Step{}
 

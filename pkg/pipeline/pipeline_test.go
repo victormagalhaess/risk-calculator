@@ -7,7 +7,7 @@ import (
 	"github.com/victormagalhaess/origin-backend-take-home-assignment/pkg/pipeline/steps"
 )
 
-func TestNewPipeline(t *testing.T) {
+func TestPipeline_WhenNewPipeline_ThenShouldBeEmpty(t *testing.T) {
 	pipeline := pipeline.NewPipeline()
 	if pipeline == nil {
 		t.Error("Expected a pipeline, got nil")
@@ -17,7 +17,7 @@ func TestNewPipeline(t *testing.T) {
 	}
 }
 
-func TestAddStep(t *testing.T) {
+func TestPipeline_When_AddStep_Then_ShouldContainStep(t *testing.T) {
 	pipeline := pipeline.NewPipeline()
 	pipeline.AddStep(steps.NoHouse)
 	if pipeline != nil && len(pipeline.RiskSteps) != 1 {
@@ -25,7 +25,7 @@ func TestAddStep(t *testing.T) {
 	}
 }
 
-func TestAddSteps(t *testing.T) {
+func TestPipeline_When_AddSteps_Then_ShouldContainAllSteps(t *testing.T) {
 	pipeline := pipeline.NewPipeline()
 	pipeline.AddSteps(steps.NoHouse, steps.NoIncome)
 	if pipeline != nil && len(pipeline.RiskSteps) != 2 {
